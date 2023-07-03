@@ -32,8 +32,11 @@ display.addEventListener('input', (event) => {
 buttons.forEach(button => {
     button.addEventListener('click', (event) => {
         const buttonValue = event.target.textContent;
-        const currentValue = display.textContent;
-        display.textContent = currentValue + buttonValue;
+
+        if (!isNaN(buttonValue)) {
+            const currentValue = display.textContent;
+            display.textContent = currentValue + buttonValue;
+        }
     })
 });
 
@@ -78,7 +81,11 @@ const calculate = () => {
             default:
                 return 'Invalid operator'
         }
+        display.textContent = result;
+        firstNumber = result;
+        secondNumber = 0;
         console.log(result);
+
     }
 }
 
@@ -94,10 +101,39 @@ nine.addEventListener('click', () => handleNumberClick(9));
 zero.addEventListener('click', () => handleNumberClick(0));
 equals.addEventListener('click', () => calculate());
 
-plus.addEventListener('click', () => onClickOperator('+'));
-minus.addEventListener('click', () => onClickOperator('-'));
-product.addEventListener('click', () => onClickOperator('*'));
-division.addEventListener('click', () => onClickOperator('/'));
+plus.addEventListener('click', () => {
+
+    onClickOperator('+')
+    display.textContent = "";
+});
+
+minus.addEventListener('click', () => {
+
+    onClickOperator('-')
+    display.textContent = "";
+});
+
+
+product.addEventListener('click', () => {
+
+    onClickOperator('*')
+    display.textContent = "";
+});
+
+division.addEventListener('click', () => {
+
+    onClickOperator('/')
+    display.textContent = "";
+});
+
+
+clear.addEventListener('click', () => {
+
+    display.textContent = "";
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = "";
+});
 
 
 // console.log(add(2, 2))
