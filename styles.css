@@ -1,5 +1,5 @@
 body {
-    background-color: beige;
+    background-color: black;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -8,10 +8,40 @@ body {
 
 #container {
     display: flex;
-    flex-wrap: wrap;
-    width: 300px
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 500px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+
+.display {
+    height: 64px;
+    width: 250px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 40px;
+    padding: 12px
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
 }
 
 button {
-    flex-basis: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    padding: 10px;
+    font-size: 16px;
+    height: 50px;
+    border-radius: 50%;
+
 }
