@@ -13,7 +13,7 @@ body {
     justify-content: center;
     width: 300px;
     height: 500px;
-    background-color: antiquewhite;
+    background-color: slategray;
     border-radius: 10px;
 }
 
@@ -29,6 +29,7 @@ body {
 }
 
 .buttons {
+    padding-top: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
