@@ -89,41 +89,101 @@ const calculate = () => {
     }
 }
 
-one.addEventListener('click', () => handleNumberClick(1));
-two.addEventListener('click', () => handleNumberClick(2));
-three.addEventListener('click', () => handleNumberClick(3));
-four.addEventListener('click', () => handleNumberClick(4));
-five.addEventListener('click', () => handleNumberClick(5));
-six.addEventListener('click', () => handleNumberClick(6));
-seven.addEventListener('click', () => handleNumberClick(7));
-eight.addEventListener('click', () => handleNumberClick(8));
-nine.addEventListener('click', () => handleNumberClick(9));
-zero.addEventListener('click', () => handleNumberClick(0));
+one.addEventListener('click', () => {
+
+    handleNumberClick(1)
+});
+
+two.addEventListener('click', () => {
+
+    handleNumberClick(2)
+});
+
+three.addEventListener('click', () => {
+
+    handleNumberClick(3)
+});
+
+four.addEventListener('click', () => {
+
+    handleNumberClick(4)
+});
+
+five.addEventListener('click', () => {
+
+    handleNumberClick(5)
+});
+
+six.addEventListener('click', () => {
+
+    handleNumberClick(6)
+});
+
+seven.addEventListener('click', () => {
+
+    handleNumberClick(7)
+});
+
+eight.addEventListener('click', () => {
+
+    handleNumberClick(8)
+});
+
+nine.addEventListener('click', () => {
+
+    handleNumberClick(9)
+});
+
+zero.addEventListener('click', () => {
+
+    handleNumberClick(0)
+});
+
 equals.addEventListener('click', () => calculate());
 
 plus.addEventListener('click', () => {
 
-    onClickOperator('+')
-    display.textContent = "";
+    if (!firstNumber || !secondNumber) {
+        onClickOperator('+');
+        display.textContent = "";
+    } else {
+        calculate();
+        onClickOperator('+');
+    }
 });
 
 minus.addEventListener('click', () => {
 
-    onClickOperator('-')
-    display.textContent = "";
+    if (!firstNumber || !secondNumber) {
+        onClickOperator('-')
+        display.textContent = "";
+    } else {
+        calculate();
+        onClickOperator('-');
+    }
 });
 
 
 product.addEventListener('click', () => {
 
-    onClickOperator('*')
-    display.textContent = "";
+    if (!firstNumber || !secondNumber) {
+        onClickOperator('*');
+        display.textContent = "";
+    } else {
+        calculate();
+        onClickOperator('*');
+    }
 });
 
 division.addEventListener('click', () => {
 
-    onClickOperator('/')
-    display.textContent = "";
+    if (!firstNumber || !secondNumber) {
+        onClickOperator('/');
+        display.textContent = "";
+    } else {
+        calculate();
+        onClickOperator('/');
+    }
 });
 
 

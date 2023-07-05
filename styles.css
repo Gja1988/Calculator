@@ -25,7 +25,8 @@ body {
     align-items: center;
     justify-content: flex-end;
     font-size: 40px;
-    padding: 12px
+    padding: 12px;
+    border-radius: 10px;
 }
 
 .buttons {
