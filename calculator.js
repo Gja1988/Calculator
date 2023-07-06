@@ -33,12 +33,25 @@ buttons.forEach(button => {
     button.addEventListener('click', (event) => {
         const buttonValue = event.target.textContent;
 
-        if (!isNaN(buttonValue)) {
+        if (buttonValue === 'Clear') {
+            display.textContent = '';
+        } else if (!isNaN(buttonValue)) {
             const currentValue = display.textContent;
-            display.textContent = currentValue + buttonValue;
+            display.textContent = currentValue === '0' ? buttonValue : currentValue + buttonValue;
         }
-    })
+    });
 });
+
+// buttons.forEach(button => {
+//     button.addEventListener('click', (event) => {
+//         const buttonValue = event.target.textContent;
+
+//         if (!isNaN(buttonValue)) {
+//             const currentValue = display.textContent;
+//             display.textContent = currentValue + buttonValue;
+//         }
+//     })
+// });
 
 const onClickFirstNum = (num) => firstNumber = num;
 const onClickSecNum = (num) => secondNumber = num;
@@ -91,7 +104,9 @@ const calculate = () => {
 
 one.addEventListener('click', () => {
 
+
     handleNumberClick(1)
+    testFunc();
 });
 
 two.addEventListener('click', () => {
@@ -189,7 +204,7 @@ division.addEventListener('click', () => {
 
 clear.addEventListener('click', () => {
 
-    display.textContent = "";
+    display.textContent = "0";
     firstNumber = 0;
     secondNumber = 0;
     operator = "";
