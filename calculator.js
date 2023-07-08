@@ -1,6 +1,7 @@
 let firstNumber;
 let secondNumber;
 let operator;
+let isNeg;
 
 const display = document.querySelector('.display');
 const container = document.querySelector('#container');
@@ -22,12 +23,58 @@ const buttons = document.querySelectorAll('.buttons');
 const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
 const deletePrevious = document.querySelector('.delete');
+const decimal = document.querySelector('.decimal');
+const percentage = document.querySelector('.percentage');
+const negToggle = document.querySelector('.toggle');
+
+const percent = () => {
+
+    const currentValue = display.textContent;
+
+    if (!operator) {
+        firstNumber = currentValue;
+        display.textContent = firstNumber / 100;
+    } else {
+        secondNumber = currentValue;
+        display.textContent = secondNumber / 100;
+    }
+}
+
+percentage.addEventListener('click', () => {
+
+    percent();
+})
+
+const negative = () => {
+
+    const currentValue = parseFloat(display.textContent);
+
+    if (!operator) {
+        firstNumber = -currentValue;
+        display.textContent = firstNumber;
+    } else {
+        secondNumber = -currentValue;
+        display.textContent = secondNumber;
+    }
+}
+
+negToggle.addEventListener('click', () => {
+
+    negative();
+})
+
+
 
 display.addEventListener('input', (event) => {
 
     const inputValue = event.target.value;
     display.textContent = inputValue;
 })
+
+const onClickFirstNum = (num) => firstNumber = num;
+const onClickSecNum = (num) => secondNumber = num;
+const onClickOperator = (o) => operator = o;
+
 
 buttons.forEach(button => {
     button.addEventListener('click', (event) => {
@@ -42,32 +89,29 @@ buttons.forEach(button => {
     });
 });
 
-// buttons.forEach(button => {
-//     button.addEventListener('click', (event) => {
-//         const buttonValue = event.target.textContent;
 
-//         if (!isNaN(buttonValue)) {
-//             const currentValue = display.textContent;
-//             display.textContent = currentValue + buttonValue;
-//         }
-//     })
-// });
+decimal.addEventListener('click', () => {
 
-const onClickFirstNum = (num) => firstNumber = num;
-const onClickSecNum = (num) => secondNumber = num;
-const onClickOperator = (o) => operator = o;
+    const currentValue = display.textContent;
+    if (!currentValue.includes('.')) {
+        display.textContent = currentValue + '.';
+    }
+});
+
 
 const handleNumberClick = (num) => {
 
+    const currentValue = display.textContent;
+
     if (!operator) {
-        if (firstNumber !== undefined) {
-            firstNumber = firstNumber * 10 + num;
+        if (currentValue !== undefined || currentValue.includes('.')) {
+            firstNumber = parseFloat(currentValue + num);
         } else {
             firstNumber = num;
         }
     } else {
-        if (secondNumber !== undefined) {
-            secondNumber = secondNumber * 10 + num
+        if (currentValue !== undefined || currentValue.includes('.')) {
+            secondNumber = parseFloat(currentValue + num);
         } else {
             secondNumber = num;
         }
@@ -75,6 +119,7 @@ const handleNumberClick = (num) => {
 }
 
 const calculate = () => {
+
     if (!firstNumber || !secondNumber || !operator) {
         throw new Error("Something went wrong")
     } else {
@@ -98,7 +143,6 @@ const calculate = () => {
         firstNumber = result;
         secondNumber = 0;
         console.log(result);
-
     }
 }
 
@@ -106,7 +150,6 @@ one.addEventListener('click', () => {
 
 
     handleNumberClick(1)
-    testFunc();
 });
 
 two.addEventListener('click', () => {
